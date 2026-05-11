@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Mini ChatGPT</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial;
+
+    background:#343541;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    height:100vh;
+}
+
+.chat-container{
+
+    width:400px;
+
+    height:650px;
+
+    background:#444654;
+
+    border-radius:15px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+.header{
+
+    background:#202123;
+
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+
+    font-size:24px;
+
+    font-weight:bold;
+}
+
+.messages{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:15px;
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.message{
+
+    max-width:80%;
+
+    padding:12px;
+
+    margin-bottom:15px;
+
+    border-radius:12px;
+
+    line-height:1.5;
+
+    color:white;
+}
+
+.user{
+
+    background:#19c37d;
+
+    align-self:flex-end;
+}
+
+.bot{
+
+    background:#2d2f39;
+
+    align-self:flex-start;
+}
+
+.input-zone{
+
+    display:flex;
+
+    padding:10px;
+
+    background:#202123;
+}
+
+input{
+
+    flex:1;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:16px;
+}
+
+button{
+
+    margin-left:10px;
+
+    padding:12px 18px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#19c37d;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+}
+
+button:hover{
+
+    background:#15a76a;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="chat-container">
+
+    <div class="header">
+        🤖 Mini ChatGPT
+    </div>
+
+    <div class="messages" id="messages">
+
+    </div>
+
+    <div class="input-zone">
+
+        <input
+        type="text"
+        id="input"
+        placeholder="Écris un message...">
+
+        <button onclick="envoyer()">
+            Envoyer
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+function envoyer(){
+
+    let input =
+    document.getElementById("input");
+
+    let texte = input.value.trim();
+
+    if(texte === "") return;
+
+    ajouterMessage(texte, "user");
+
+    input.value = "";
+
+    setTimeout(() => {
+
+        let reponse =
+        genererReponse(texte);
+
+        ajouterMessage(reponse, "bot");
+
+    }, 1000);
+}
+
+function ajouterMessage(texte, type){
+
+    let div =
+    document.createElement("div");
+
+    div.classList.add("message");
+
+    div.classList.add(type);
+
+    div.innerText = texte;
+
+    document.getElementById("messages")
+    .appendChild(div);
+
+    scrollBas();
+}
+
+function scrollBas(){
+
+    let messages =
+    document.getElementById("messages");
+
+    messages.scrollTop =
+    messages.scrollHeight;
+}
+
+function genererReponse(question){
+
+    question =
+    question.toLowerCase();
+
+    if(question.includes("bonjour")){
+
+        return "Bonjour 👋";
+    }
+
+    else if(question.includes("salut")){
+
+        return "Salut 😊";
+    }
+
+    else if(question.includes("ça va")){
+
+        return "Oui ça va très bien 😄";
+    }
+
+    else if(question.includes("ton nom")){
+
+        return "Je suis Mini ChatGPT 🤖";
+    }
+
+    else if(question.includes("merci")){
+
+        return "Avec plaisir ❤️";
+    }
+
+    else if(question.includes("amour")){
+
+        return "L’amour est compliqué parfois 😅";
+    }
+
+    else if(question.includes("qui es tu")){
+
+        return "Je suis un chatbot créé en JavaScript 👨‍💻";
+    }
+
+    else{
+
+        return "Je ne comprends pas encore cette question 😅";
+    }
+}
+
+// envoyer avec Entrée
+document
+.getElementById("input")
+.addEventListener("keypress",
+
+function(e){
+
+    if(e.key === "Enter"){
+
+        envoyer();
+    }
+});
+
+</script>
+
+</body>
+</html>
