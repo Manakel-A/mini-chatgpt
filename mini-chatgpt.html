@@ -189,27 +189,16 @@ small{
 }
 
 </style>
-
 </head>
-
 <body>
-
 <div class="chat-container">
-
     <div class="header">
-
         Mini Chat
-
         <div class="subtitle">
-
             Conversation intelligente en JavaScript
-
         </div>
-
     </div>
-
     <div class="messages" id="messages">
-
     </div>
 
     <div class="input-zone">
@@ -232,35 +221,20 @@ small{
 <script>
 
 let reponsesGenerales = [
-
     "Je comprends.",
-
     "C’est intéressant.",
-
     "Ah d’accord.",
-
     "Tu peux m’en dire plus ?",
-
     "Je vois ce que tu veux dire.",
-
     "Ça doit être compliqué parfois.",
-
     "Je pense que beaucoup de personnes ressentent ça.",
-
     "C’est une bonne question.",
-
     "Tu sembles y penser sérieusement.",
-
     "Parfois il faut juste du temps.",
-
     "Je comprends ton point de vue.",
-
     "C’est vrai.",
-
     "Je suis d’accord avec toi.",
-
     "Ça arrive souvent.",
-
     "Tu as probablement raison."
 ];
 
@@ -355,18 +329,14 @@ function genererReponse(question){
     if(
 
         question.includes("bonjour") ||
-
         question.includes("salut") ||
-
         question.includes("hello")
     ){
 
         return choisir([
 
             "Salut, comment vas-tu ?",
-
             "Bonjour, ça fait plaisir de parler avec toi.",
-
             "Hello, quoi de neuf ?"
         ]);
     }
@@ -375,16 +345,13 @@ function genererReponse(question){
     else if(
 
         question.includes("ça va") ||
-
         question.includes("ca va")
     ){
 
         return choisir([
 
             "Oui ça va bien, merci.",
-
             "Je vais bien aujourd’hui.",
-
             "Ça va plutôt bien."
         ]);
     }
@@ -393,9 +360,7 @@ function genererReponse(question){
     else if(
 
         question.includes("amour") ||
-
         question.includes("copain") ||
-
         question.includes("relation")
     ){
 
@@ -519,7 +484,5 @@ function(e){
 });
 
 </script>
-
 </body>
-
 </html>
